@@ -1,14 +1,11 @@
-package ua.aniloom
+package ua.aniloom.presentation
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import ua.aniloom.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

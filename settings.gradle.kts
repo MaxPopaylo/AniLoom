@@ -11,6 +11,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -21,3 +22,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AniLoom"
 include(":app")
+include(":data")
+include(":domain")
