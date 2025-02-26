@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "ua.aniloom"
+    namespace = "ua.aniloom.data"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ua.aniloom"
         minSdk = 29
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,27 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
 
-    implementation(project(":data"))
     implementation(project(":domain"))
-
-    //MARK: Core Dependencies
-    implementation(libs.androidx.core.ktx)
-
-    //MARK: UI Dependencies
-    implementation(libs.bundles.androidx.ui)
-
-    //MARK: Lifecycle Dependencies
-    implementation(libs.bundles.androidx.lifecycle)
-
-    //MARK: Navigation Dependencies
-    implementation(libs.bundles.androidx.navigation)
 
     //MARK: Testing Dependencies
     testImplementation(libs.junit)

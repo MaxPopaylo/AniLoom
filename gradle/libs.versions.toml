@@ -11,6 +11,7 @@ espressoCore = "3.6.1"
 #MARK: Core
 coreKtx = "1.15.0"
 appcompat = "1.7.0"
+kotlinxCoroutinesCore = "1.7.1"
 material = "1.12.0"
 constraintlayout = "2.2.0"
 
@@ -21,6 +22,12 @@ lifecycleViewmodelKtx = "2.8.7"
 #MARK: Navigation
 navigationFragmentKtx = "2.8.7"
 navigationUiKtx = "2.8.7"
+
+#MARK: Coroutines
+jetbrainsKotlinJvm = "2.0.0"
+
+#MARK: Ingect
+javaxInject = "1"
 
 
 
@@ -46,11 +53,19 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
+#MARK: Coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+#MARK: Ingect
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
+
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 
 
 

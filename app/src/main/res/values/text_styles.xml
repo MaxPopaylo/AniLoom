@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="TextAppearance.AniLoom.Base" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+
+    <!-- Font Weights -->
+    <style name="TextAppearance.AniLoom.W300" parent="TextAppearance.AniLoom.Base">
+        <item name="android:fontWeight">300</item>
+        <item name="fontFamily">@font/font_manrope_light</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.W400" parent="TextAppearance.AniLoom.Base">
+        <item name="android:fontWeight">400</item>
+        <item name="fontFamily">@font/font_manrope_regular</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.W500" parent="TextAppearance.AniLoom.Base">
+        <item name="android:fontWeight">500</item>
+        <item name="fontFamily">@font/font_manrope_medium</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.W600" parent="TextAppearance.AniLoom.Base">
+        <item name="android:fontWeight">600</item>
+        <item name="fontFamily">@font/font_manrope_semibold</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.W700" parent="TextAppearance.AniLoom.Base">
+        <item name="android:fontWeight">700</item>
+        <item name="fontFamily">@font/font_manrope_bold</item>
+    </style>
+
+
+    <!-- Font Styles -->
+    <style name="TextAppearance.AniLoom.Heading1" parent="TextAppearance.AniLoom.W700">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.Heading2" parent="TextAppearance.AniLoom.W600">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.Heading3" parent="TextAppearance.AniLoom.W500">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.Body" parent="TextAppearance.AniLoom.W400">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.AniLoom.Caption" parent="TextAppearance.AniLoom.W300">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
 
 </resources>
