@@ -1,4 +1,4 @@
-package ua.aniloom.presentation
+package ua.aniloom.presentation.pages
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
