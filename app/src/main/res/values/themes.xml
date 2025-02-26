@@ -1,14 +1,40 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.AniLoom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<resources>
+
+    <style name="Base.v29.Theme.AniLoom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
 
-        <item name="colorSecondary">@color/dark_brown</item>
-        <item name="colorSecondaryVariant">@color/dark_gray</item>
-        <item name="colorOnSecondary">@color/gray</item>
+        <item name="colorSecondary">@color/brown_900</item>
+        <item name="colorSecondaryVariant">@color/gray_700</item>
+        <item name="colorOnSecondary">@color/gray_500</item>
 
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorSecondary</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+
+        <!-- Default button style -->
+        <item name="buttonStyle">@style/Widget.AniLoom.Button.Base</item>
+
+        <!-- Default text appearances -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.AniLoom.Heading1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.AniLoom.Heading2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.AniLoom.Heading3</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.AniLoom.Body</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.AniLoom.Caption</item>
     </style>
 
+    <style name="Base.Theme.AniLoom" parent="Base.v29.Theme.AniLoom"/>
+    <style name="Theme.AniLoom" parent="Base.Theme.AniLoom"/>
+
+
+
+
+    <style name="Theme.AniLoom.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AniLoom.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.AniLoom.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
