@@ -2,7 +2,6 @@
 <resources>
 
     <style name="TextAppearance.AniLoom.Base" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/font_manrope</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
@@ -10,22 +9,27 @@
     <!-- Font Weights -->
     <style name="TextAppearance.AniLoom.W300" parent="TextAppearance.AniLoom.Base">
         <item name="android:fontWeight">300</item>
+        <item name="fontFamily">@font/font_manrope_light</item>
     </style>
 
     <style name="TextAppearance.AniLoom.W400" parent="TextAppearance.AniLoom.Base">
         <item name="android:fontWeight">400</item>
+        <item name="fontFamily">@font/font_manrope_regular</item>
     </style>
 
     <style name="TextAppearance.AniLoom.W500" parent="TextAppearance.AniLoom.Base">
         <item name="android:fontWeight">500</item>
+        <item name="fontFamily">@font/font_manrope_medium</item>
     </style>
 
     <style name="TextAppearance.AniLoom.W600" parent="TextAppearance.AniLoom.Base">
         <item name="android:fontWeight">600</item>
+        <item name="fontFamily">@font/font_manrope_semibold</item>
     </style>
 
     <style name="TextAppearance.AniLoom.W700" parent="TextAppearance.AniLoom.Base">
         <item name="android:fontWeight">700</item>
+        <item name="fontFamily">@font/font_manrope_bold</item>
     </style>
 
 
