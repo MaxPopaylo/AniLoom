@@ -7,4 +7,8 @@
     <string name="search_field_hint">Search anime …</string>
     <string name="cancel">Cancel</string>
     <string name="filter">Filter</string>
+    <string name="charts">Charts</string>
+    <string name="top_100">Top 100</string>
+    <string name="anime">Anime</string>
+    <string name="manga">Manga</string>
 </resources>

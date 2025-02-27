@@ -13,21 +13,24 @@ coreKtx = "1.15.0"
 appcompat = "1.7.0"
 kotlinxCoroutinesCore = "1.7.1"
 material = "1.12.0"
-constraintlayout = "2.2.0"
+constraintlayout = "2.2.1"
 
 #MARK: Lifecycle
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 
 #MARK: Navigation
-navigationFragmentKtx = "2.8.7"
-navigationUiKtx = "2.8.7"
+navigationFragmentKtx = "2.8.8"
+navigationUiKtx = "2.8.8"
 
 #MARK: Coroutines
 jetbrainsKotlinJvm = "2.0.0"
 
 #MARK: Ingect
 javaxInject = "1"
+
+#MARK: Rounded Image
+roundedimageview = "2.3.0"
 
 
 
@@ -59,6 +62,9 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 #MARK: Ingect
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 
+#MARK: Rounded Image
+roundedimageview = { module = "com.makeramen:roundedimageview", version.ref = "roundedimageview" }
+
 
 
 [plugins]
@@ -71,7 +77,7 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 
 [bundles]
 #MARK: UI Bundle
-androidx-ui = ["androidx-appcompat", "material", "androidx-constraintlayout"]
+androidx-ui = ["androidx-appcompat", "material", "androidx-constraintlayout", "roundedimageview"]
 
 #MARK: Lifecycle Bundle
 androidx-lifecycle = ["androidx-lifecycle-livedata-ktx", "androidx-lifecycle-viewmodel-ktx"]

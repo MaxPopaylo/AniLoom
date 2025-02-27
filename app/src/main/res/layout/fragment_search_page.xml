@@ -27,7 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="24dp"/>
 
-
+            <include
+                android:id="@+id/vCharts"
+                layout="@layout/view_charts_buttons" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/charts"
+        android:textAppearance="@style/TextAppearance.AniLoom.Heading2"
+        android:textColor="?attr/colorOnPrimary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp">
+
+
+        <FrameLayout
+            android:id="@+id/bAnimeCharts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background_card_border"
+            android:clickable="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/background_img_anime"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="15dp"
+                android:alpha=".7"
+                android:layout_marginStart="1.5dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1.5dp"
+                android:layout_marginBottom="1dp"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/top_100"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anime"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+
+        <Space
+            android:layout_width="24.dp"
+            android:layout_height="0dp"/>
+
+
+        <FrameLayout
+            android:id="@+id/bMangaCharts"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_card_border"
+            android:clickable="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/background_img_manga"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="15dp"
+                android:alpha=".7"
+                android:layout_marginStart="1.5dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1.5dp"
+                android:layout_marginBottom="1dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/top_100"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manga"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
