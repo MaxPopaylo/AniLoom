@@ -4,20 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary"
-    tools:context=".presentation.pages.search.SearchPageFragment">
+    tools:context=".presentation.pages.search.SearchPageFragment"
+    android:paddingHorizontal="16dp">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Blanck"
-            android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <ua.aniloom.presentation.common.views.SearchFieldView
+                android:id="@+id/vSearchField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

@@ -1,11 +1,18 @@
 package ua.aniloom.presentation.pages.search
 
+import android.content.Context
 import android.os.Bundle
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ua.aniloom.R
+import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
+
+import ua.aniloom.databinding.FragmentSearchPageBinding
 
 
 /**
@@ -18,6 +25,9 @@ class SearchPageFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding: FragmentSearchPageBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,8 +39,23 @@ class SearchPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_page, container, false)
+
+        _binding = FragmentSearchPageBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.vSearchField.setOnSearchListener {
+
+        }
+
+        binding.vSearchField.setItems(
+            items = Genre.entries.toList(),
+            labelProvider = {  it.label },
+            onItemClick = {}
+        )
     }
 
     companion object {
@@ -51,4 +76,14 @@ class SearchPageFragment : Fragment() {
                 }
             }
     }
+}
+
+enum class Genre(
+    val label: String,
+    val id: Int
+) {
+    ACTION("Action", 1),
+    ADVENTURE("Adventure", 2),
+    AVANT_GARDE("Avant_Gard", 3),
+    COMEDY("Comedy", 4)
 }
