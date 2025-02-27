@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.core
+package ua.aniloom.presentation.common.core
 
 import android.os.Bundle
 import android.view.View

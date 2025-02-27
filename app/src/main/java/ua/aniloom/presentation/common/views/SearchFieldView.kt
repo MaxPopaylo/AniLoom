@@ -1,0 +1,58 @@
+package ua.aniloom.presentation.common.views
+
+import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
+import android.transition.AutoTransition
+import android.transition.TransitionManager
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
+import androidx.core.view.isVisible
+import ua.aniloom.databinding.ViewSearchFieldBinding
+
+class SearchFieldView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): LinearLayout(context, attrs, defStyleAttr) {
+
+    private val binding: ViewSearchFieldBinding =
+        ViewSearchFieldBinding.inflate(LayoutInflater.from(context), this, true)
+
+    private var searchListener: ((String) -> Unit)? = null
+
+    private val textField = binding.etSearch
+
+    init {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        with(binding) {
+            etSearch.setOnFocusChangeListener { _, hasFocus ->
+                TransitionManager.beginDelayedTransition(binding.root, AutoTransition().setDuration(200))
+                bSearchCancel.isVisible = hasFocus
+            }
+
+            etSearch.addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    searchListener?.invoke(s.toString())
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            })
+
+            bSearchCancel.setOnClickListener {
+                etSearch.text.clear()
+                etSearch.clearFocus()
+                imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
+            }
+        }
+    }
+
+    fun setOnSearchListener(listener: (String) -> Unit) {
+        searchListener = listener
+    }
+
+    fun getText(): String = textField.text.toString()
+}

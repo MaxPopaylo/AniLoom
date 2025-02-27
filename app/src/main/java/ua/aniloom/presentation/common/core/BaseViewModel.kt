@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.core
+package ua.aniloom.presentation.common.core
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

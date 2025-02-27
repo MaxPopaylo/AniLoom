@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.core
+package ua.aniloom.presentation.common.core
 
 sealed class UIState<T> {
     class Idle<T> : UIState<T>()
