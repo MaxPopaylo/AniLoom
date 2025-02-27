@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/myListPageFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/icon_menu_book"
         android:title="@string/title_my_list" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/searchPageFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icon_search"
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/profilePageFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_settings" />
+        android:icon="@drawable/icon_account"
+        android:title="@string/title_profile" />
 
 </menu>
