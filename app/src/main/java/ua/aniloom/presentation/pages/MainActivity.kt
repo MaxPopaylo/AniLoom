@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navHost.navController)
 
         val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.myListPageFragment,
             R.id.searchPageFragment,
+            R.id.profilePageFragment
         ))
 
         setupActionBarWithNavController(navHost.navController, appBarConfiguration)

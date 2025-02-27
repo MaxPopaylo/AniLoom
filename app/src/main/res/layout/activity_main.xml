@@ -40,9 +40,12 @@
         app:layout_constraintStart_toStartOf="parent"
         android:outlineProvider="none"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="unlabeled"
+        app:labelVisibilityMode="selected"
         android:background="?attr/colorSecondary"
-        app:itemIconTint="?attr/colorOnSecondary"
+        app:itemIconTint="@color/bottom_nav_icon_color"
+        app:itemTextColor="@color/bottom_nav_icon_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.AniLoom.Caption"
+        app:itemIconSize="28dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
