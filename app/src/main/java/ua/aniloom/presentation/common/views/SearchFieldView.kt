@@ -54,6 +54,19 @@ class SearchFieldView @JvmOverloads constructor(
         }
     }
 
+    fun setOnSearchListener(listener: (String) -> Unit) {
+        searchListener = listener
+    }
+
+    fun getText(): String = textField.text.toString()
+
+
+    /**
+     * Creates buttons from the provided items (e.g., enum)
+     * @param items list of items to generate buttons from
+     * @param labelProvider function to provide the label for each button
+     * @param onItemClick function to handle button clicks
+     */
     fun <T> setItems(
         items: List<T>,
         labelProvider: (T) -> String,
@@ -83,12 +96,6 @@ class SearchFieldView @JvmOverloads constructor(
             binding.buttonContainer.addView(button)
         }
     }
-
-    fun setOnSearchListener(listener: (String) -> Unit) {
-        searchListener = listener
-    }
-
-    fun getText(): String = textField.text.toString()
 
     private fun dpToInt(value: Float): Int = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
