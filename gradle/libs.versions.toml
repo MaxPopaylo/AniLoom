@@ -32,6 +32,19 @@ javaxInject = "1"
 #MARK: Rounded Image
 roundedimageview = "2.3.0"
 
+#MARK: Glide (Image loading)
+glide = "4.16.0"
+
+#MARK: Pagination
+pagingRuntime = "3.3.6"
+
+# MARK: - Networking
+squareupRetrofit = "2.11.0"
+okhttpBom = "4.12.0"
+sandwichRetrofitVersion = "2.0.6"
+moshiKotlinVersion = "1.15.1"
+converterMoshiVersion = "2.11.0"
+
 
 
 [libraries]
@@ -65,6 +78,22 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInjec
 #MARK: Rounded Image
 roundedimageview = { module = "com.makeramen:roundedimageview", version.ref = "roundedimageview" }
 
+#MARK: Glide (Image loading)
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+
+#MARK: Pagination
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+
+# MARK: - Networking
+squareup-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlinVersion" }
+squareup-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "squareupRetrofit" }
+okhttp-bom = { module = "com.squareup.okhttp3:okhttp-bom", version.ref = "okhttpBom" }
+okhttp = { module = "com.squareup.okhttp3:okhttp" }
+skydoves-sandwich-retrofit = { module = "com.github.skydoves:sandwich-retrofit", version.ref = "sandwichRetrofitVersion" }
+retrofit2-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshiVersion" }
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor" }
+
+
 
 
 [plugins]
@@ -87,3 +116,8 @@ androidx-navigation = ["androidx-navigation-fragment-ktx", "androidx-navigation-
 
 #MARK: Testing Bundle
 androidx-test = ["androidx-junit", "androidx-espresso-core"]
+
+# MARK: - Networking
+moshi = ["squareup-moshi-kotlin", "retrofit2-converter-moshi"]
+retrofit = ["squareup-retrofit", "skydoves-sandwich-retrofit"]
+okhttp = ["okhttp", "okhttp-logging-interceptor"]

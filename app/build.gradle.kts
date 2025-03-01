@@ -43,6 +43,12 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
 
+    //MARK: Glide (Image loading)
+    implementation (libs.glide)
+
+    //MARK: Pagination
+    implementation(libs.androidx.paging.runtime)
+
     //MARK: Core Dependencies
     implementation(libs.androidx.core.ktx)
 

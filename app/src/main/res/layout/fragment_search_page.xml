@@ -23,13 +23,65 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"/>
 
-            <Space
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="24dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-            <include
-                android:id="@+id/vCharts"
-                layout="@layout/view_charts_buttons" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"/>
+
+                <include
+                    android:id="@+id/vCharts"
+                    layout="@layout/view_charts_buttons" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"/>
+
+                <TextView
+                    android:id="@+id/bOngoing"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ongoing"
+                    android:textSize="22sp"
+                    android:textAppearance="@style/TextAppearance.AniLoom.W600"
+                    android:textColor="?attr/colorOnPrimary" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvOngoingList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"/>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"/>
+
+
+                <TextView
+                    android:id="@+id/bHistory"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history"
+                    android:textSize="22sp"
+                    android:textAppearance="@style/TextAppearance.AniLoom.W600"
+                    android:textColor="?attr/colorOnPrimary" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHistoryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
