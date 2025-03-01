@@ -45,7 +45,7 @@
                     android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ongoing"
+                    android:text="@string/airing"
                     android:textSize="22sp"
                     android:textAppearance="@style/TextAppearance.AniLoom.W600"
                     android:textColor="?attr/colorOnPrimary" />
