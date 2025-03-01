@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/charts"
-        android:textAppearance="@style/TextAppearance.AniLoom.Heading2"
+        android:textSize="22sp"
+        android:textAppearance="@style/TextAppearance.AniLoom.W600"
         android:textColor="?attr/colorOnPrimary" />
 
     <LinearLayout

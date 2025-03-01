@@ -11,4 +11,12 @@
     <string name="top_100">Top 100</string>
     <string name="anime">Anime</string>
     <string name="manga">Manga</string>
+    <string name="centered_dot">•</string>
+    <string name="rate_0_0">0.0</string>
+    <string name="rating">Rating</string>
+    <string name="year">Year</string>
+    <string name="title">Title</string>
+    <string name="poster">Poster</string>
+    <string name="ongoing">Ongoing »</string>
+    <string name="history">History »</string>
 </resources>
