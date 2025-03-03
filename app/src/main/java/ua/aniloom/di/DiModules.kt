@@ -16,6 +16,7 @@ import ua.aniloom.di.providers.provideNotAuthenticatedClient
 import ua.aniloom.domain.repository.AnimeRepository
 import ua.aniloom.domain.usecases.FetchAiringRankingAnimeUseCase
 import ua.aniloom.presentation.pages.search.SearchViewModel
+import ua.aniloom.presentation.pages.search.fragments.anime.AnimeMainViewModel
 
 class DiModules {
     private val networkModule = module {
@@ -31,6 +32,7 @@ class DiModules {
 
     private val viewModelsModule = module {
         viewModelOf(::SearchViewModel)
+        viewModelOf(::AnimeMainViewModel)
     }
 
     val appModules = listOf(networkModule, animeModule, viewModelsModule)
