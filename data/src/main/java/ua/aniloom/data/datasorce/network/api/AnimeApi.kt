@@ -7,10 +7,9 @@ import ua.aniloom.data.datasorce.network.dto.PagingDto
 import ua.aniloom.data.datasorce.network.dto.anime.AnimePreviewDto
 
 interface AnimeApi {
-    @GET("anime/ranking")
+    @GET("anime/ranking?ranking_type=airing&fields=${AnimePreviewDto.MAL_FIELDS}")
     suspend fun getAiringRankingAnime(
         @Query("limit") limit: Int,
-        @Query("offset") offset: Int,
-        @Query("fields") fields: String = AnimePreviewDto.MAL_FIELDS
+        @Query("offset") offset: Int
     ): ApiResponse<PagingDto<AnimePreviewDto>>
 }
