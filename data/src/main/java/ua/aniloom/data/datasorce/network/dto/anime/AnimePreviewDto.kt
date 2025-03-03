@@ -1,22 +1,25 @@
 package ua.aniloom.data.datasorce.network.dto.anime
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import ua.aniloom.data.datasorce.network.dto.DtoMapper
 import ua.aniloom.domain.models.anime.Aired
 import ua.aniloom.domain.models.anime.AnimePreview
 import ua.aniloom.domain.models.anime.MediaType
 import ua.aniloom.domain.models.anime.Score
 
+@JsonClass(generateAdapter = true)
 data class AnimePreviewDto(
     val id: Int,
     val title: String,
-    val mainPicture: MainPictureDto,
-    val mediaType: String,
-    val startDate: String,
-    val endDate: String?,
-    val startSeason: StartSeasonDto,
-    val numEpisodes: Int,
+    @Json(name = "main_picture") val mainPicture: MainPictureDto,
+    @Json(name = "media_type") val mediaType: String,
+    @Json(name = "start_date") val startDate: String,
+    @Json(name = "end_date") val endDate: String?,
+    @Json(name = "start_season") val startSeason: StartSeasonDto,
+    @Json(name = "num_episodes") val numEpisodes: Int,
     val mean: Double,
-    val numScoringUsers: Int
+    @Json(name = "num_scoring_users") val numScoringUsers: Int
 ) : DtoMapper<AnimePreviewDto, AnimePreview> {
     override fun mapToDomain(): AnimePreview =
         AnimePreview(
