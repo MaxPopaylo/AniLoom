@@ -43,6 +43,19 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
 
+    //MARK: Networking
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.bundles.okhttp)
+    implementation(libs.bundles.moshi)
+    implementation(libs.bundles.retrofit)
+
+    //MARK: Koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.anroid)
+
+    //MARK: Fragment View Binding Delegate
+    implementation(libs.fragmentviewbindingdelegate.kt)
+
     //MARK: Glide (Image loading)
     implementation (libs.glide)
 
@@ -63,5 +76,6 @@ dependencies {
 
     //MARK: Testing Dependencies
     testImplementation(libs.junit)
+    testImplementation(libs.bundles.koin.tests) //MARK: Koin
     androidTestImplementation(libs.bundles.androidx.test)
 }

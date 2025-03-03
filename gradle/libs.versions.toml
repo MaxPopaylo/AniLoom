@@ -1,7 +1,7 @@
-#MARK: Version Numbers
 [versions]
-agp = "8.8.1"
+agp = "8.8.2"
 kotlin = "2.0.0"
+ksp = "2.0.21-1.0.25"
 
 #MARK: Testing
 junit = "4.13.2"
@@ -11,7 +11,7 @@ espressoCore = "3.6.1"
 #MARK: Core
 coreKtx = "1.15.0"
 appcompat = "1.7.0"
-kotlinxCoroutinesCore = "1.7.1"
+kotlinxCoroutinesCore = "1.8.0"
 material = "1.12.0"
 constraintlayout = "2.2.1"
 
@@ -44,6 +44,12 @@ okhttpBom = "4.12.0"
 sandwichRetrofitVersion = "2.0.6"
 moshiKotlinVersion = "1.15.1"
 converterMoshiVersion = "2.11.0"
+
+# MARK: - Koin
+koinBom = "4.0.2"
+
+#MARK: Fragment View Binding Delegate
+fragmentviewbindingdelegateKt = "1.0.2"
 
 
 
@@ -83,6 +89,7 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
 #MARK: Pagination
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "pagingRuntime" }
 
 # MARK: - Networking
 squareup-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlinVersion" }
@@ -92,6 +99,15 @@ okhttp = { module = "com.squareup.okhttp3:okhttp" }
 skydoves-sandwich-retrofit = { module = "com.github.skydoves:sandwich-retrofit", version.ref = "sandwichRetrofitVersion" }
 retrofit2-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshiVersion" }
 okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor" }
+
+# MARK: - Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
+koin-anroid = { module = "io.insert-koin:koin-android" }
+koin-test = { module = "io.insert-koin:koin-test" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4"}
+
+#MARK: Fragment View Binding Delegate
+fragmentviewbindingdelegate-kt = { module = "com.github.Zhuinden:fragmentviewbindingdelegate-kt", version.ref = "fragmentviewbindingdelegateKt" }
 
 
 
@@ -121,3 +137,6 @@ androidx-test = ["androidx-junit", "androidx-espresso-core"]
 moshi = ["squareup-moshi-kotlin", "retrofit2-converter-moshi"]
 retrofit = ["squareup-retrofit", "skydoves-sandwich-retrofit"]
 okhttp = ["okhttp", "okhttp-logging-interceptor"]
+
+# MARK: - Koin
+koin-tests = ["koin-test", "koin-test-junit4"]
