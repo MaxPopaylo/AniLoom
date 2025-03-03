@@ -4,9 +4,11 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.message
+import retrofit2.HttpException
 import ua.aniloom.data.datasorce.network.dto.DtoMapper
 import ua.aniloom.data.datasorce.network.dto.PagingDto
 import java.io.IOException
+import java.io.InterruptedIOException
 
 private const val BASE_STARTING_OFFSET_INDEX = 0
 
@@ -43,7 +45,11 @@ abstract class BaseMALPagingSource<Domain : Any, DTO : DtoMapper<DTO, Domain>>(
 
         } catch (exception: IOException) {
             LoadResult.Error(exception)
-        } catch (exception: Exception) {
+        } catch (exception: HttpException) {
+            LoadResult.Error(exception)
+        } catch (exception: NullPointerException) {
+            LoadResult.Error(exception)
+        } catch (exception: InterruptedIOException) {
             LoadResult.Error(exception)
         }
     }
