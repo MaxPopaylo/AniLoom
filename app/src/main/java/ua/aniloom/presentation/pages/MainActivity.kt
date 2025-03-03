@@ -26,19 +26,9 @@ class MainActivity : AppCompatActivity() {
             controller.hide(WindowInsetsCompat.Type.navigationBars())
         }
 
-        setSupportActionBar(binding.mainToolbar)
-
         val navHost = supportFragmentManager.findFragmentById(
             R.id.mainFragments) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHost.navController)
-
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.myListPageFragment,
-            R.id.searchPageFragment,
-            R.id.profilePageFragment
-        ))
-
-        setupActionBarWithNavController(navHost.navController, appBarConfiguration)
 
     }
 }
