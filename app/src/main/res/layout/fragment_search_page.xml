@@ -1,89 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     tools:context=".presentation.pages.search.SearchPageFragment"
+    android:orientation="vertical"
     android:paddingHorizontal="16dp">
 
+    <ua.aniloom.presentation.common.views.SearchFieldView
+        android:id="@+id/vSearchField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-    <ScrollView
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/searchScreensTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimary"
+        app:tabTextColor="?attr/colorOnSecondary"
+        app:tabSelectedTextColor="?attr/colorOnPrimary"
+        app:tabBackground="@drawable/pager_tab_indicator"
+        app:tabIndicatorHeight="0dp"
+        android:layout_marginVertical="28dp"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/searchScreensPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <ua.aniloom.presentation.common.views.SearchFieldView
-                android:id="@+id/vSearchField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"/>
+    </androidx.viewpager2.widget.ViewPager2>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="28dp"/>
-
-                <include
-                    android:id="@+id/vCharts"
-                    layout="@layout/view_charts_buttons" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="28dp"/>
-
-                <TextView
-                    android:id="@+id/bAiring"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/airing"
-                    android:textSize="22sp"
-                    android:textAppearance="@style/TextAppearance.AniLoom.W600"
-                    android:textColor="?attr/colorOnPrimary" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAiringAnimeList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp"/>
-
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="28dp"/>
-
-
-                <TextView
-                    android:id="@+id/bHistory"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/history"
-                    android:textSize="22sp"
-                    android:textAppearance="@style/TextAppearance.AniLoom.W600"
-                    android:textColor="?attr/colorOnPrimary" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHistoryList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp"/>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</FrameLayout>
+</LinearLayout>
