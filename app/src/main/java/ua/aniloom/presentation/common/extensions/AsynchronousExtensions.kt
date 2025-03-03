@@ -4,9 +4,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import androidx.paging.map
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 /**
@@ -49,3 +53,12 @@ inline fun <T> Flow<T>.launchAndCollectLatestIn(
 ) = viewLifecycleOwner.launchWithRepeatOnLifecycle(state) {
     collectLatest { collector(it) }
 }
+
+inline fun <T : Any, R : Any> Flow<PagingData<T>>.mapPaging(
+    coroutineScope: CoroutineScope,
+    crossinline transform: (value: T) -> R
+): Flow<PagingData<R>> = this.map { value: PagingData<T> ->
+    value.map {
+        it.let(transform)
+    }
+}.cachedIn(coroutineScope)

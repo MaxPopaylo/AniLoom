@@ -41,7 +41,7 @@
                     android:layout_height="28dp"/>
 
                 <TextView
-                    android:id="@+id/bOngoing"
+                    android:id="@+id/bAiring"
                     android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     android:textColor="?attr/colorOnPrimary" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvOngoingList"
+                    android:id="@+id/rvAiringAnimeList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

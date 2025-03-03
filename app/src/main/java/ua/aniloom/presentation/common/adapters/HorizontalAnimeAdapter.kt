@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.recycleview.adapters
+package ua.aniloom.presentation.common.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import ua.aniloom.R
 import ua.aniloom.databinding.ViewVerticalListItemBinding
 import ua.aniloom.domain.models.anime.AnimePreview
-import ua.aniloom.presentation.common.utils.formatToString
+import ua.aniloom.presentation.common.extensions.formatToString
 
 class HorizontalAnimeAdapter(
     private val onClickListener: (AnimePreview) -> Unit
