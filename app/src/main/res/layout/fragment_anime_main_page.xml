@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     tools:context=".presentation.pages.search.SearchPageFragment">
 
@@ -20,22 +21,19 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"/>
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bAiring"
-            android:clickable="true"
+            style="@style/Widget.MyApp.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/airing"
-            android:textSize="22sp"
-            android:textAppearance="@style/TextAppearance.AniLoom.W600"
-            android:textColor="?attr/colorOnPrimary" />
+            app:icon="@drawable/icon_arrow_next"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAiringAnimeList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"/>
+            android:orientation="horizontal"/>
 
 
     </LinearLayout>

@@ -45,4 +45,17 @@
         <item name="android:textAppearance">@style/TextAppearance.AniLoom.Heading3</item>
     </style>
 
+    <style name="Widget.MyApp.Button.TextButton.Icon" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">22sp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AniLoom.W600</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="iconGravity">textEnd</item>
+        <item name="iconPadding">12dp</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+        <item name="iconSize">24dp</item>
+    </style>
+
+
 </resources>
