@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/searchScreensTab"
         android:layout_width="match_parent"
@@ -24,14 +23,12 @@
         app:tabSelectedTextColor="?attr/colorOnPrimary"
         app:tabBackground="@drawable/pager_tab_indicator"
         app:tabIndicatorHeight="0dp"
-        android:layout_marginVertical="28dp"/>
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="14dp"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/searchScreensPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </androidx.viewpager2.widget.ViewPager2>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

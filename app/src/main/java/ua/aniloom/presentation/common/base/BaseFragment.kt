@@ -13,9 +13,9 @@ import com.google.android.material.progressindicator.CircularProgressIndicator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import ua.aniloom.domain.models.core.NetworkError
-import ua.aniloom.presentation.common.extensions.launchAndCollectIn
-import ua.aniloom.presentation.common.extensions.launchAndCollectLatestIn
-import ua.aniloom.presentation.common.extensions.showToastLong
+import ua.aniloom.presentation.common.utils.extensions.launchAndCollectIn
+import ua.aniloom.presentation.common.utils.extensions.launchAndCollectLatestIn
+import ua.aniloom.presentation.common.utils.extensions.showToastLong
 
 abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
     @LayoutRes layoutId: Int

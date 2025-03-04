@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.common.extensions
+package ua.aniloom.presentation.common.utils.extensions
 
 import android.app.Activity
 import android.view.View

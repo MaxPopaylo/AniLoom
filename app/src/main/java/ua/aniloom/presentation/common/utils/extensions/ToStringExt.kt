@@ -1,4 +1,4 @@
-package ua.aniloom.presentation.common.extensions
+package ua.aniloom.presentation.common.utils.extensions
 
 import java.util.Locale
 

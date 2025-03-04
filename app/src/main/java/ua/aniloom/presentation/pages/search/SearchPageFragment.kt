@@ -1,23 +1,13 @@
 package ua.aniloom.presentation.pages.search
 
-import android.view.View
-import android.widget.Toast
-import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
-import androidx.paging.PagingData
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ua.aniloom.R
 import ua.aniloom.databinding.FragmentSearchPageBinding
 import ua.aniloom.domain.models.anime.Genres
 import ua.aniloom.presentation.common.adapters.FragmentPagerAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
-import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
 import ua.aniloom.presentation.pages.search.fragments.anime.AnimeMainPageFragment
 import ua.aniloom.presentation.pages.search.fragments.manga.MangaMainPageFragment
 
