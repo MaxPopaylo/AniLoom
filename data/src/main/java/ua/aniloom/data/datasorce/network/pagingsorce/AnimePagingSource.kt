@@ -1,13 +1,12 @@
 package ua.aniloom.data.datasorce.network.pagingsorce
 
-import ua.aniloom.data.datasorce.network.api.AnimeApi
+import com.skydoves.sandwich.ApiResponse
+import ua.aniloom.data.datasorce.network.dto.PagingDto
 import ua.aniloom.data.datasorce.network.dto.anime.AnimePreviewDto
 import ua.aniloom.domain.models.anime.AnimePreview
 
 class AnimePagingSource(
-    private val api: AnimeApi
+    request: suspend (limit: Int, offset: Int) -> ApiResponse<PagingDto<AnimePreviewDto>>
 ): BaseMALPagingSource<AnimePreview, AnimePreviewDto>(
-    request = { limit, offset ->
-        api.getAiringRankingAnime(limit, offset)
-    }
+    request = request
 )

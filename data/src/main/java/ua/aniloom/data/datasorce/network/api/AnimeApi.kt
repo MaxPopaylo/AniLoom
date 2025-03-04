@@ -12,4 +12,10 @@ interface AnimeApi {
         @Query("limit") limit: Int,
         @Query("offset") offset: Int
     ): ApiResponse<PagingDto<AnimePreviewDto>>
+
+    @GET("anime/ranking?ranking_type=all&fields=${AnimePreviewDto.MAL_FIELDS}")
+    suspend fun getRankingAnime(
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int
+    ): ApiResponse<PagingDto<AnimePreviewDto>>
 }

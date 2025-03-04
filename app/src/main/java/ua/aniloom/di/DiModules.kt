@@ -15,6 +15,7 @@ import ua.aniloom.di.providers.provideMoshi
 import ua.aniloom.di.providers.provideNotAuthenticatedClient
 import ua.aniloom.domain.repository.AnimeRepository
 import ua.aniloom.domain.usecases.FetchAiringRankingAnimeUseCase
+import ua.aniloom.domain.usecases.FetchRankingAnimeUseCase
 import ua.aniloom.presentation.pages.search.SearchViewModel
 import ua.aniloom.presentation.pages.search.fragments.anime.AnimeMainViewModel
 
@@ -28,6 +29,7 @@ class DiModules {
         single<AnimeApi> { provideAnimeApi( get<OkHttpClient>(named(NOT_AUTHENTICATED_CLIENT)), get<Moshi>()) }
         singleOf(::AnimeRepositoryImpl) { bind<AnimeRepository>() }
         factoryOf(::FetchAiringRankingAnimeUseCase) { bind<FetchAiringRankingAnimeUseCase>() }
+        factoryOf(::FetchRankingAnimeUseCase) { bind<FetchRankingAnimeUseCase>() }
     }
 
     private val viewModelsModule = module {

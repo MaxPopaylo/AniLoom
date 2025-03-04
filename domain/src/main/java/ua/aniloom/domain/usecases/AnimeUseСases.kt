@@ -7,3 +7,9 @@ class FetchAiringRankingAnimeUseCase(
 ) {
     operator fun invoke() = animeRepository.fetchAiringRankingAnime()
 }
+
+class FetchRankingAnimeUseCase(
+    private val animeRepository: AnimeRepository
+) {
+    operator fun invoke() = animeRepository.fetchRankingAnime()
+}
