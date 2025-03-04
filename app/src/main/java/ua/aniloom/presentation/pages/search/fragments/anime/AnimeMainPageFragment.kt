@@ -10,7 +10,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ua.aniloom.R
 import ua.aniloom.databinding.FragmentAnimeMainPageBinding
 import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
+import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
+import ua.aniloom.presentation.common.utils.extensions.setupRecycler
 
 class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMainPageBinding>(
     R.layout.fragment_anime_main_page
@@ -25,35 +27,54 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
         })
     }
 
+    private val rankingAnimeAdapter by lazy (LazyThreadSafetyMode.NONE) {
+        StackedAnimeCardAdapter(onClickListener = {
+            Toast.makeText(requireContext(), "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
+        })
+    }
+
+
 
     override fun initialize() {
         setupAiringAnimeRecycler()
-
-
-        with(binding) {
-            vCharts.apply {
-                bMangaCharts.setOnClickListener {  }
-                bAnimeCharts.setOnClickListener {  }
-            }
-        }
+        setupRankingAnimeCarousel()
     }
 
     override fun setupRequests() {
         fetchAiringAnime()
+        fetchRankingAnime()
+    }
+
+
+
+    private fun setupRankingAnimeCarousel() = with(binding) {
+        vAnimeCarousel.setupAdapter(rankingAnimeAdapter)
+        rankingAnimeAdapter.addLoadStateListener { loadState ->
+            rvAiringAnimeList.isVisible = loadState.refresh is LoadState.NotLoading
+        }
     }
 
     private fun setupAiringAnimeRecycler() = with(binding) {
-        rvAiringAnimeList.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        rvAiringAnimeList.adapter = airingAnimeAdapter
+        rvAiringAnimeList.setupRecycler(
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false),
+            airingAnimeAdapter
+        )
 
         airingAnimeAdapter.addLoadStateListener { loadState ->
             rvAiringAnimeList.isVisible = loadState.refresh is LoadState.NotLoading
         }
     }
 
+
     private fun fetchAiringAnime() {
         viewModel.fetchAiringRankingAnime().collectPaging {
             airingAnimeAdapter.submitData(it)
+        }
+    }
+
+    private fun fetchRankingAnime() {
+        viewModel.fetchRankingAnime().collectPaging {
+            rankingAnimeAdapter.submitData(it)
         }
     }
 }
