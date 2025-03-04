@@ -1,7 +1,9 @@
 package ua.aniloom.domain.models.anime
 
+import ua.aniloom.domain.models.IBaseDiffModel
+
 data class AnimeDetails(
-    val id: Int,
+    override val id: Int,
     val title: String,
     val alternativeTitles: AlternativeTitles,
     val mainPicture: String,
@@ -24,4 +26,4 @@ data class AnimeDetails(
     val genres: List<Tag>,
     val themes: List<Tag>,
     val studios: List<Tag>
-)
+): IBaseDiffModel<Int>

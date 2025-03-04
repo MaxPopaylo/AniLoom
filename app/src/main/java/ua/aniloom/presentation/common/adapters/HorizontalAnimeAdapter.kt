@@ -3,21 +3,21 @@ package ua.aniloom.presentation.common.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ua.aniloom.R
-import ua.aniloom.databinding.ViewVerticalListItemBinding
+import ua.aniloom.databinding.ViewListVerticalItemBinding
 import ua.aniloom.domain.models.anime.AnimePreview
-import ua.aniloom.presentation.common.extensions.formatToString
+import ua.aniloom.presentation.common.base.BaseDiffUtilItemCallback
+import ua.aniloom.presentation.common.utils.extensions.formatToString
 
 class HorizontalAnimeAdapter(
     private val onClickListener: (AnimePreview) -> Unit
 ) :
-    PagingDataAdapter<AnimePreview, HorizontalAnimeAdapter.HorizontalAnimeVH>(AnimeDiffItemCallback)
+    PagingDataAdapter<AnimePreview, HorizontalAnimeAdapter.HorizontalAnimeVH>(BaseDiffUtilItemCallback())
 {
 
-    inner class HorizontalAnimeVH(private val binding: ViewVerticalListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HorizontalAnimeVH(private val binding: ViewListVerticalItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             item: AnimePreview
         ) {
@@ -39,7 +39,7 @@ class HorizontalAnimeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalAnimeVH {
         return HorizontalAnimeVH(
-            ViewVerticalListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ViewListVerticalItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -47,9 +47,4 @@ class HorizontalAnimeAdapter(
         getItem(position)?.let { holder.bind(it) }
     }
 
-}
-
-private object AnimeDiffItemCallback : DiffUtil.ItemCallback<AnimePreview>() {
-    override fun areItemsTheSame(oldItem: AnimePreview, newItem: AnimePreview): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: AnimePreview, newItem: AnimePreview): Boolean = oldItem == newItem
 }

@@ -1,7 +1,9 @@
 package ua.aniloom.domain.models.anime
 
+import ua.aniloom.domain.models.IBaseDiffModel
+
 data class AnimePreview(
-    val id: Int,
+    override val id: Int,
     val title: String,
     val mainPicture: String,
 
@@ -10,4 +12,4 @@ data class AnimePreview(
     val numEps: Int,
 
     val score: Score
-)
+): IBaseDiffModel<Int>
