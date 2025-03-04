@@ -50,6 +50,9 @@ koinBom = "4.0.2"
 #MARK: Fragment View Binding Delegate
 fragmentviewbindingdelegateKt = "1.0.2"
 
+#MARK: Dots pager indicator
+androidIndefinitePagerIndicator = "1.5"
+
 
 
 [libraries]
@@ -108,6 +111,8 @@ koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4"}
 #MARK: Fragment View Binding Delegate
 fragmentviewbindingdelegate-kt = { module = "com.github.Zhuinden:fragmentviewbindingdelegate-kt", version.ref = "fragmentviewbindingdelegateKt" }
 
+#MARK: Dots pager indicator
+android-indefinite-pager-indicator = { module = "com.github.rbro112:Android-Indefinite-Pager-Indicator", version.ref = "androidIndefinitePagerIndicator" }
 
 
 
@@ -121,7 +126,7 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 
 [bundles]
 #MARK: UI Bundle
-androidx-ui = ["androidx-appcompat", "material", "androidx-constraintlayout", "roundedimageview"]
+androidx-ui = ["androidx-appcompat", "material", "androidx-constraintlayout", "roundedimageview", "android-indefinite-pager-indicator"]
 
 #MARK: Lifecycle Bundle
 androidx-lifecycle = ["androidx-lifecycle-livedata-ktx", "androidx-lifecycle-viewmodel-ktx"]
