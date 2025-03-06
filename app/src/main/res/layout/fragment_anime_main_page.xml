@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
-    tools:context=".presentation.pages.search.SearchPageFragment">
+    tools:context=".presentation.pages.search."
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bAiring"
-            style="@style/Widget.MyApp.Button.TextButton.Icon"
+            style="@style/Widget.AniLoom.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/airing"
@@ -35,6 +36,18 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="36dp"/>
+
+        <ua.aniloom.presentation.common.views.TodayScheduleView
+            android:id="@+id/vTodaySchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp"/>
 
     </LinearLayout>
 

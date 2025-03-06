@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_card_border"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textSize="22sp"
+        android:textColor="?attr/colorOnPrimary"
+        android:textAppearance="@style/TextAppearance.AniLoom.W600"
+        android:paddingVertical="8dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorOnSecondary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTodaySchedule"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"/>
+
+</LinearLayout>

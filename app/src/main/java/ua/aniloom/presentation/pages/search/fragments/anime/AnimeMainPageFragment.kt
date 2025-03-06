@@ -11,6 +11,7 @@ import ua.aniloom.R
 import ua.aniloom.databinding.FragmentAnimeMainPageBinding
 import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
 import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
+import ua.aniloom.presentation.common.adapters.TodayScheduleAnimeAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
 import ua.aniloom.presentation.common.utils.extensions.setupRecycler
 
@@ -33,24 +34,36 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
         })
     }
 
-
+    private val todayScheduleAnimeAdapter by lazy (LazyThreadSafetyMode.NONE) {
+        TodayScheduleAnimeAdapter(onClickListener = {
+            Toast.makeText(requireContext(), "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
+        })
+    }
 
     override fun initialize() {
         setupAiringAnimeRecycler()
         setupRankingAnimeCarousel()
+        setupTodaySchedule()
     }
 
     override fun setupRequests() {
         fetchAiringAnime()
         fetchRankingAnime()
+        fetchTodayScheduleAnime()
     }
 
 
+    private fun setupTodaySchedule() = with(binding) {
+        vTodaySchedule.setupAdapter(todayScheduleAnimeAdapter)
+        todayScheduleAnimeAdapter.addLoadStateListener { loadState ->
+            vTodaySchedule.isVisible = loadState.refresh is LoadState.NotLoading
+        }
+    }
 
     private fun setupRankingAnimeCarousel() = with(binding) {
         vAnimeCarousel.setupAdapter(rankingAnimeAdapter)
         rankingAnimeAdapter.addLoadStateListener { loadState ->
-            rvAiringAnimeList.isVisible = loadState.refresh is LoadState.NotLoading
+            vAnimeCarousel.isVisible = loadState.refresh is LoadState.NotLoading
         }
     }
 
@@ -65,6 +78,11 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
         }
     }
 
+    private fun fetchTodayScheduleAnime() {
+        viewModel.fetchAiringRankingAnime().collectPaging {
+            todayScheduleAnimeAdapter.submitData(it)
+        }
+    }
 
     private fun fetchAiringAnime() {
         viewModel.fetchAiringRankingAnime().collectPaging {

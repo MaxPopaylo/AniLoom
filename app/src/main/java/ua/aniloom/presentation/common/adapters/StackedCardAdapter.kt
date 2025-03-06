@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ua.aniloom.R
-import ua.aniloom.databinding.ViewStackedCardItemBinding
+import ua.aniloom.databinding.ViewListStackedCardItemBinding
 import ua.aniloom.domain.models.anime.AnimePreview
 import ua.aniloom.presentation.common.base.BaseDiffUtilItemCallback
 
@@ -16,7 +16,7 @@ class StackedAnimeCardAdapter(
     BaseDiffUtilItemCallback()
 ) {
 
-    inner class StackedAnimeCardVH(private val binding: ViewStackedCardItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class StackedAnimeCardVH(private val binding: ViewListStackedCardItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             item: AnimePreview
         ) {
@@ -33,7 +33,7 @@ class StackedAnimeCardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StackedAnimeCardVH {
         return StackedAnimeCardVH(
-            ViewStackedCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ViewListStackedCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
