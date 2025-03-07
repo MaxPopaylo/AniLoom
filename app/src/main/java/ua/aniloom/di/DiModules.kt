@@ -8,14 +8,17 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import ua.aniloom.data.datasorce.network.api.AnimeApi
+import ua.aniloom.data.datasorce.network.api.JikanAnimeApi
+import ua.aniloom.data.datasorce.network.api.MALAnimeApi
 import ua.aniloom.data.repository.AnimeRepositoryImpl
-import ua.aniloom.di.providers.provideAnimeApi
+import ua.aniloom.di.providers.provideJikanAnimeApi
+import ua.aniloom.di.providers.provideMALAnimeApi
 import ua.aniloom.di.providers.provideMoshi
 import ua.aniloom.di.providers.provideNotAuthenticatedClient
 import ua.aniloom.domain.repository.AnimeRepository
 import ua.aniloom.domain.usecases.FetchAiringRankingAnimeUseCase
 import ua.aniloom.domain.usecases.FetchRankingAnimeUseCase
+import ua.aniloom.domain.usecases.FetchScheduleTodayAnimeUseCase
 import ua.aniloom.presentation.pages.search.SearchViewModel
 import ua.aniloom.presentation.pages.search.fragments.anime.AnimeMainViewModel
 
@@ -26,10 +29,13 @@ class DiModules {
     }
 
     private val animeModule = module {
-        single<AnimeApi> { provideAnimeApi( get<OkHttpClient>(named(NOT_AUTHENTICATED_CLIENT)), get<Moshi>()) }
+        single<MALAnimeApi> { provideMALAnimeApi( get<OkHttpClient>(named(NOT_AUTHENTICATED_CLIENT)), get<Moshi>()) }
+        single<JikanAnimeApi> { provideJikanAnimeApi( get<OkHttpClient>(named(NOT_AUTHENTICATED_CLIENT)), get<Moshi>()) }
         singleOf(::AnimeRepositoryImpl) { bind<AnimeRepository>() }
+
         factoryOf(::FetchAiringRankingAnimeUseCase) { bind<FetchAiringRankingAnimeUseCase>() }
         factoryOf(::FetchRankingAnimeUseCase) { bind<FetchRankingAnimeUseCase>() }
+        factoryOf(::FetchScheduleTodayAnimeUseCase) { bind<FetchScheduleTodayAnimeUseCase>() }
     }
 
     private val viewModelsModule = module {

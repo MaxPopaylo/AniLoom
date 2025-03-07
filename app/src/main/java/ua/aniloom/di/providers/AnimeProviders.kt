@@ -5,17 +5,31 @@ import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import ua.aniloom.data.datasorce.network.api.AnimeApi
-import ua.aniloom.di.BASE_API_URL
+import ua.aniloom.data.datasorce.network.api.JikanAnimeApi
+import ua.aniloom.data.datasorce.network.api.MALAnimeApi
+import ua.aniloom.di.BASE_JIKAN_API_URL
+import ua.aniloom.di.BASE_MAL_API_URL
 
-fun provideAnimeApi(
+fun provideMALAnimeApi(
     httpClient: OkHttpClient,
     moshi: Moshi
-): AnimeApi =
+): MALAnimeApi =
     Retrofit.Builder()
-        .baseUrl(BASE_API_URL)
+        .baseUrl(BASE_MAL_API_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
         .client(httpClient)
         .build()
-        .create(AnimeApi::class.java)
+        .create(MALAnimeApi::class.java)
+
+fun provideJikanAnimeApi(
+    httpClient: OkHttpClient,
+    moshi: Moshi
+): JikanAnimeApi =
+    Retrofit.Builder()
+        .baseUrl(BASE_JIKAN_API_URL)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+        .client(httpClient)
+        .build()
+        .create(JikanAnimeApi::class.java)
