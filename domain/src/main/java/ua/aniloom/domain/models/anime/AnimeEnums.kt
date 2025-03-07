@@ -25,6 +25,7 @@ enum class RankingType(val label: String) {
 }
 
 enum class Genres(val genre: Tag) {
+    TOP_100(Tag(-1, "Top 100")),
     COMEDY(Tag(4, "Comedy")),
     FANTASY(Tag(10, "Fantasy")),
     ACTION(Tag(1, "Action")),

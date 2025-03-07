@@ -3,6 +3,7 @@ package ua.aniloom.data.datasorce.network.dto.anime
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import ua.aniloom.data.datasorce.network.dto.DtoMapper
+import ua.aniloom.data.datasorce.network.dto.LocalDateFormatter
 import ua.aniloom.domain.models.anime.Aired
 import ua.aniloom.domain.models.anime.AnimePreview
 import ua.aniloom.domain.models.anime.MediaType
@@ -28,8 +29,8 @@ data class MALAnimePreviewDto(
             mainPicture = mainPicture.medium,
             mediaType = MediaType.valueOf(mediaType.uppercase()),
             aired = Aired(
-                startData = startDate,
-                endData = endDate,
+                startData = LocalDateFormatter.malParse(startDate),
+                endData = endDate?.let { LocalDateFormatter.malParse(it) },
                 year = startSeason.year,
                 season = startSeason.season
             ),

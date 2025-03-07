@@ -1,5 +1,7 @@
 package ua.aniloom.domain.models.anime
 
+import java.time.LocalDate
+
 data class AlternativeTitles(
     val synonyms: List<String>,
     val en: String,
@@ -7,8 +9,8 @@ data class AlternativeTitles(
 )
 
 data class Aired(
-    val startData: String,
-    val endData: String?,
+    val startData: LocalDate,
+    val endData: LocalDate?,
     val year: Int,
     val season: String
 )
