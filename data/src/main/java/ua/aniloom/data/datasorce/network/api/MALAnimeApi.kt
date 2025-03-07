@@ -6,7 +6,7 @@ import retrofit2.http.Query
 import ua.aniloom.data.datasorce.network.dto.MALPagingDto
 import ua.aniloom.data.datasorce.network.dto.anime.MALAnimePreviewDto
 
-interface AnimeApi {
+interface MALAnimeApi {
     @GET("anime/ranking?ranking_type=airing&fields=${MALAnimePreviewDto.MAL_FIELDS}")
     suspend fun getAiringRankingAnime(
         @Query("limit") limit: Int,
