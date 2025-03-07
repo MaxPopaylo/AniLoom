@@ -63,10 +63,6 @@ class CarouselMediaView @JvmOverloads constructor(
         setupView(adapter)
     }
 
-    fun setupContainerClickListener(onClickListener: () -> Unit) {
-        binding.carouselContainer.setOnClickListener { onClickListener() }
-    }
-
     private fun getPagerPaddingEnd(context: Context, pagerWidth: Float): Int {
         val screenWidth =  context.resources.configuration.screenWidthDp
         return TypedValue.applyDimension(

@@ -9,7 +9,7 @@ import ua.aniloom.domain.models.anime.MediaType
 import ua.aniloom.domain.models.anime.Score
 
 @JsonClass(generateAdapter = true)
-data class AnimePreviewDto(
+data class MALAnimePreviewDto(
     val id: Int,
     val title: String,
     @Json(name = "main_picture") val mainPicture: MainPictureDto,
@@ -20,7 +20,7 @@ data class AnimePreviewDto(
     @Json(name = "num_episodes") val numEpisodes: Int,
     val mean: Double,
     @Json(name = "num_scoring_users") val numScoringUsers: Int
-) : DtoMapper<AnimePreviewDto, AnimePreview> {
+) : DtoMapper<MALAnimePreviewDto, AnimePreview> {
     override fun mapToDomain(): AnimePreview =
         AnimePreview(
             id = id,

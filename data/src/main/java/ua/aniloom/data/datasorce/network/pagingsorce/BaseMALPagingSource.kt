@@ -6,7 +6,7 @@ import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.message
 import retrofit2.HttpException
 import ua.aniloom.data.datasorce.network.dto.DtoMapper
-import ua.aniloom.data.datasorce.network.dto.PagingDto
+import ua.aniloom.data.datasorce.network.dto.MALPagingDto
 import java.io.IOException
 import java.io.InterruptedIOException
 
@@ -14,7 +14,7 @@ private const val BASE_STARTING_OFFSET_INDEX = 0
 
 
 abstract class BaseMALPagingSource<Domain : Any, DTO : DtoMapper<DTO, Domain>>(
-    private val request: suspend (limit: Int, offset: Int) -> ApiResponse<PagingDto<DTO>>
+    private val request: suspend (limit: Int, offset: Int) -> ApiResponse<MALPagingDto<DTO>>
 ) : PagingSource<Int, Domain>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Domain> {

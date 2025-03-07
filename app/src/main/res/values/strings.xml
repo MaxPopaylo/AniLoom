@@ -19,4 +19,7 @@
     <string name="poster">Poster</string>
     <string name="airing">Airing</string>
     <string name="top">Top</string>
+    <string name="eps">eps</string>
+    <string name="date">Date</string>
+    <string name="episodes_count">eps: %1$s</string>
 </resources>
