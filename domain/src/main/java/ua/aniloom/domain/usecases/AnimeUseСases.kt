@@ -13,3 +13,9 @@ class FetchRankingAnimeUseCase(
 ) {
     operator fun invoke() = animeRepository.fetchRankingAnime()
 }
+
+class FetchScheduleTodayAnimeUseCase(
+    private val animeRepository: AnimeRepository
+) {
+    operator fun invoke(day: String) = animeRepository.fetchScheduleTodayAnime(day)
+}

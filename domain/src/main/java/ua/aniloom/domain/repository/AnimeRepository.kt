@@ -7,4 +7,5 @@ import ua.aniloom.domain.models.anime.AnimePreview
 interface AnimeRepository {
     fun fetchAiringRankingAnime(): Flow<PagingData<AnimePreview>>
     fun fetchRankingAnime(): Flow<PagingData<AnimePreview>>
+    fun fetchScheduleTodayAnime(day: String): Flow<PagingData<AnimePreview>>
 }
