@@ -30,8 +30,11 @@ class SearchFieldView @JvmOverloads constructor(
     private val textField = binding.etSearch
 
     init {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        setupView()
+    }
 
+    private fun setupView() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         with(binding) {
             etSearch.setOnFocusChangeListener { _, hasFocus ->
                 TransitionManager.beginDelayedTransition(binding.root, AutoTransition().setDuration(200))

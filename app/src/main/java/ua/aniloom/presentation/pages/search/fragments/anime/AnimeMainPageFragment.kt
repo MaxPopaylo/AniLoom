@@ -13,7 +13,9 @@ import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
 import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
 import ua.aniloom.presentation.common.adapters.TodayScheduleAnimeAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
+import ua.aniloom.presentation.common.utils.extensions.parseToFormat
 import ua.aniloom.presentation.common.utils.extensions.setupRecycler
+import java.util.Date
 
 class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMainPageBinding>(
     R.layout.fragment_anime_main_page
@@ -79,7 +81,8 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     }
 
     private fun fetchTodayScheduleAnime() {
-        viewModel.fetchAiringRankingAnime().collectPaging {
+        val currentDay = Date().parseToFormat("EEEE")
+        viewModel.fetchScheduleTodayAnime(currentDay.lowercase()).collectPaging {
             todayScheduleAnimeAdapter.submitData(it)
         }
     }

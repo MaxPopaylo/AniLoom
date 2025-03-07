@@ -18,40 +18,42 @@ class SearchPageFragment : BaseFragment<SearchViewModel, FragmentSearchPageBindi
     override val binding by viewBinding (FragmentSearchPageBinding::bind)
     override val viewModel by viewModel<SearchViewModel>()
 
-    private val pagerAdapter by lazy (LazyThreadSafetyMode.NONE) {
-        FragmentPagerAdapter(childFragmentManager, lifecycle)
-    }
+    private var pagerAdapter: FragmentPagerAdapter? = null
+
 
     override fun initialize() {
         setupScreensPager()
+        setupSearchField()
+    }
 
-        with(binding) {
-            vSearchField.apply {
-                setItems(
-                    items = Genres.entries.toList(),
-                    labelProvider = { it.genre.name },
-                    onItemClick = {}
-                )
-                setOnSearchListener {  }
-            }
+
+    private fun setupSearchField() = with(binding) {
+        vSearchField.apply {
+            setItems(
+                items = Genres.entries.toList(),
+                labelProvider = { it.genre.name },
+                onItemClick = {
+
+                }
+            )
+            setOnSearchListener {  }
         }
     }
 
     private fun setupScreensPager() = with(binding) {
-        pagerAdapter.apply {
+        pagerAdapter = FragmentPagerAdapter(childFragmentManager, lifecycle).apply {
             addFragment(AnimeMainPageFragment(), getString(R.string.anime))
             addFragment(MangaMainPageFragment(), getString(R.string.manga))
         }
 
         searchScreensPager.apply {
-            isSaveEnabled = true
+            isSaveEnabled = false
             adapter = pagerAdapter
             isUserInputEnabled = false
         }
 
         TabLayoutMediator(searchScreensTab, searchScreensPager) { tab, position ->
-            tab.text = pagerAdapter.getPageTitle(position)
-            searchScreensPager.setCurrentItem(tab.position, true)
+            tab.text = pagerAdapter?.getPageTitle(position)
         }.attach()
     }
 
