@@ -5,6 +5,7 @@ import androidx.paging.PagingState
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.message
 import retrofit2.HttpException
+import ua.aniloom.data.datasorce.memoization.CacheMemoization
 import ua.aniloom.data.datasorce.network.dto.JikanPagingDto
 import ua.aniloom.data.datasorce.network.dto.anime.JikanAnimePreviewDto
 import ua.aniloom.domain.models.anime.AnimePreview
@@ -16,13 +17,12 @@ class AnimeScheduleTodayPagingSource(
     private val request: suspend (limit: Int, page: Int, day: String) -> ApiResponse<JikanPagingDto<JikanAnimePreviewDto>>
 ): PagingSource<Int, AnimePreview>() {
 
-    private var lastPage: Int? = null
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimePreview> {
         val limit = params.loadSize
-        val page = params.key ?: lastPage ?: getLastVisiblePage(limit).also { lastPage = it }
 
         return try {
+            val page = params.key ?: getLastVisiblePage(limit)
+
             val responseData = when (val apiResponse = request(limit, page, day)) {
                 is ApiResponse.Success -> apiResponse.data
                 is ApiResponse.Failure -> throw IOException(apiResponse.message())
@@ -58,8 +58,20 @@ class AnimeScheduleTodayPagingSource(
         }
     }
 
-    private suspend fun getLastVisiblePage(limit: Int) = when (val apiResponse = request(limit, 1, day)) {
-        is ApiResponse.Success -> apiResponse.data.paging.lastVisiblePage
-        is ApiResponse.Failure -> throw IOException(apiResponse.message())
+    private suspend fun getLastVisiblePage(limit: Int): Int {
+        val cacheKey = Triple(limit, 1, day)
+        val lastPageCache = CacheMemoization.todayScheduleLastVisiblePage
+
+        return lastPageCache.get(cacheKey) ?: run {
+            when (val apiResponse = request(limit, 1, day)) {
+                is ApiResponse.Success -> {
+                    val result = apiResponse.data.paging.lastVisiblePage
+                    lastPageCache.put(cacheKey, result)
+                    result
+                }
+                is ApiResponse.Failure -> throw IOException(apiResponse.message())
+            }
+        }
     }
+
 }
