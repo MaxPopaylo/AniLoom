@@ -13,9 +13,7 @@ import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
 import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
 import ua.aniloom.presentation.common.adapters.TodayScheduleAnimeAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
-import ua.aniloom.presentation.common.utils.extensions.parseToFormat
 import ua.aniloom.presentation.common.utils.extensions.setupRecycler
-import java.util.Date
 
 class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMainPageBinding>(
     R.layout.fragment_anime_main_page
@@ -43,14 +41,14 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     }
 
     override fun initialize() {
-        setupAiringAnimeRecycler()
         setupRankingAnimeCarousel()
+        setupAiringAnimeRecycler()
         setupTodaySchedule()
     }
 
     override fun setupRequests() {
-        fetchAiringAnime()
         fetchRankingAnime()
+        fetchAiringAnime()
         fetchTodayScheduleAnime()
     }
 
@@ -81,20 +79,19 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     }
 
     private fun fetchTodayScheduleAnime() {
-        val currentDay = Date().parseToFormat("EEEE")
-        viewModel.fetchScheduleTodayAnime(currentDay.lowercase()).collectPaging {
+        viewModel.todayScheduleAnimeFlow.collectPaging {
             todayScheduleAnimeAdapter.submitData(it)
         }
     }
 
     private fun fetchAiringAnime() {
-        viewModel.fetchAiringRankingAnime().collectPaging {
+        viewModel.airingRankingAnimeFlow.collectPaging {
             airingAnimeAdapter.submitData(it)
         }
     }
 
     private fun fetchRankingAnime() {
-        viewModel.fetchRankingAnime().collectPaging {
+        viewModel.rankingAnimeFlow.collectPaging {
             rankingAnimeAdapter.submitData(it)
         }
     }
