@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     tools:context=".presentation.pages.search."
     android:scrollbars="none">
@@ -11,43 +10,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ua.aniloom.presentation.common.views.CarouselMediaView
             android:id="@+id/vAnimeCarousel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="28dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bAiring"
-            style="@style/Widget.AniLoom.TextButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/airing"
-            app:icon="@drawable/icon_arrow_next"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvAiringAnimeList"
+        <ua.aniloom.presentation.common.views.HorizontalList
+            android:id="@+id/vAiringAnimeList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="36dp"/>
+            android:layout_marginTop="28dp" />
 
         <ua.aniloom.presentation.common.views.TodayScheduleView
             android:id="@+id/vTodaySchedule"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="32dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="32dp" />
 
     </LinearLayout>
 

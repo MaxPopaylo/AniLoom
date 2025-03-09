@@ -3,8 +3,6 @@ package ua.aniloom.presentation.pages.search.fragments.anime
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ua.aniloom.R
@@ -13,7 +11,6 @@ import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
 import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
 import ua.aniloom.presentation.common.adapters.TodayScheduleAnimeAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
-import ua.aniloom.presentation.common.utils.extensions.setupRecycler
 
 class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMainPageBinding>(
     R.layout.fragment_anime_main_page
@@ -40,6 +37,7 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
         })
     }
 
+
     override fun initialize() {
         setupRankingAnimeCarousel()
         setupAiringAnimeRecycler()
@@ -56,27 +54,47 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     private fun setupTodaySchedule() = with(binding) {
         vTodaySchedule.setupAdapter(todayScheduleAnimeAdapter)
         todayScheduleAnimeAdapter.addLoadStateListener { loadState ->
-            vTodaySchedule.isVisible = loadState.refresh is LoadState.NotLoading
+            when(loadState.refresh){
+                is LoadState.Loading -> vTodaySchedule.showShimmer()
+                is LoadState.NotLoading -> vTodaySchedule.stopShimmer()
+                is LoadState.Error -> {
+                    vTodaySchedule.isVisible = false
+                }
+            }
+        }
+    }
+
+    private fun setupAiringAnimeRecycler() = with(binding) {
+        vAiringAnimeList.setupView(
+            airingAnimeAdapter,
+            title = requireContext().getString(R.string.airing),
+            buttonOnClick = {}
+        )
+
+        airingAnimeAdapter.addLoadStateListener { loadState ->
+            when(loadState.refresh){
+                is LoadState.Loading -> vAiringAnimeList.showShimmer()
+                is LoadState.NotLoading -> vAiringAnimeList.stopShimmer()
+                is LoadState.Error -> {
+                    vAiringAnimeList.isVisible = false
+                }
+            }
         }
     }
 
     private fun setupRankingAnimeCarousel() = with(binding) {
         vAnimeCarousel.setupAdapter(rankingAnimeAdapter)
         rankingAnimeAdapter.addLoadStateListener { loadState ->
-            vAnimeCarousel.isVisible = loadState.refresh is LoadState.NotLoading
+            when(loadState.refresh){
+                is LoadState.Loading -> vAnimeCarousel.showShimmer()
+                is LoadState.NotLoading -> vAnimeCarousel.stopShimmer()
+                is LoadState.Error -> {
+                    vAnimeCarousel.isVisible = false
+                }
+            }
         }
     }
 
-    private fun setupAiringAnimeRecycler() = with(binding) {
-        rvAiringAnimeList.setupRecycler(
-            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false),
-            airingAnimeAdapter
-        )
-
-        airingAnimeAdapter.addLoadStateListener { loadState ->
-            rvAiringAnimeList.isVisible = loadState.refresh is LoadState.NotLoading
-        }
-    }
 
     private fun fetchTodayScheduleAnime() {
         viewModel.todayScheduleAnimeFlow.collectPaging {
