@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background_card_border"
     android:orientation="vertical"
     android:padding="16dp">
@@ -22,9 +23,35 @@
         android:background="?attr/colorOnSecondary" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTodaySchedule"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:orientation="vertical"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        tools:duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/shimmer_list_today_schedule_item"/>
+
+            <include
+                layout="@layout/shimmer_list_today_schedule_item"/>
+
+            <include
+                layout="@layout/shimmer_list_today_schedule_item"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </LinearLayout>

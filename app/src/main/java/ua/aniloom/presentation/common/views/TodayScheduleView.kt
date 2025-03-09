@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.aniloom.databinding.ViewTodayScheduleBinding
@@ -24,7 +25,7 @@ class TodayScheduleView @JvmOverloads constructor(
 
     private fun setupView(adapter: TodayScheduleAnimeAdapter) {
         with(binding) {
-            rvTodaySchedule.apply {
+            recyclerview.apply {
                 setupRecycler(
                     LinearLayoutManager(context, RecyclerView.VERTICAL, false),
                     adapter
@@ -37,6 +38,18 @@ class TodayScheduleView @JvmOverloads constructor(
 
     fun setupAdapter(adapter: TodayScheduleAnimeAdapter) {
         setupView(adapter)
+    }
+
+    fun showShimmer() = with(binding) {
+        recyclerview.isVisible = false
+        shimmer.startShimmer()
+        shimmer.isVisible = true
+    }
+
+    fun stopShimmer() = with(binding) {
+        shimmer.stopShimmer()
+        shimmer.isVisible = false
+        recyclerview.isVisible = true
     }
 
 }
