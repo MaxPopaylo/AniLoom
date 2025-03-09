@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ua.aniloom.databinding.ViewCarouselMediaBinding
@@ -62,6 +63,19 @@ class CarouselMediaView @JvmOverloads constructor(
     fun setupAdapter(adapter: StackedAnimeCardAdapter) {
         setupView(adapter)
     }
+
+    fun showShimmer() = with(binding) {
+        carouselContainer.isVisible = false
+        shimmer.startShimmer()
+        shimmer.isVisible = true
+    }
+
+    fun stopShimmer() = with(binding) {
+        shimmer.stopShimmer()
+        shimmer.isVisible = false
+        carouselContainer.isVisible = true
+    }
+
 
     private fun getPagerPaddingEnd(context: Context, pagerWidth: Float): Int {
         val screenWidth =  context.resources.configuration.screenWidthDp
