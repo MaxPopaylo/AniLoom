@@ -32,10 +32,10 @@ class AnimeRepositoryImpl (
     override fun fetchScheduleTodayAnime(day: String): Flow<PagingData<AnimePreview>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 4,
-                prefetchDistance = 4,
+                pageSize = 6,
+                prefetchDistance = 3,
                 enablePlaceholders = true,
-                initialLoadSize = 12,
+                initialLoadSize = 6,
                 maxSize = Int.MAX_VALUE,
                 jumpThreshold = Int.MIN_VALUE
             ),

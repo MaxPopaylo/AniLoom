@@ -12,6 +12,6 @@ interface JikanAnimeApi {
     suspend fun getTodayScheduleAnime(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
-        @Query("day") day: String
+        @Query("filter") day: String
     ): ApiResponse<JikanPagingDto<JikanAnimePreviewDto>>
 }
