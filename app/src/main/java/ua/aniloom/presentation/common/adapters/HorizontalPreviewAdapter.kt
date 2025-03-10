@@ -7,19 +7,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ua.aniloom.R
 import ua.aniloom.databinding.ViewListVerticalItemBinding
-import ua.aniloom.domain.models.anime.AnimePreview
+import ua.aniloom.domain.models.IBaseDiffModel
+import ua.aniloom.domain.models.PreviewModel
 import ua.aniloom.presentation.common.base.BaseDiffUtilItemCallback
 import ua.aniloom.presentation.common.utils.extensions.formatToString
 
-class HorizontalAnimeAdapter(
-    private val onClickListener: (AnimePreview) -> Unit
-) :
-    PagingDataAdapter<AnimePreview, HorizontalAnimeAdapter.HorizontalAnimeVH>(BaseDiffUtilItemCallback())
+class HorizontalPreviewAdapter<T>(
+    private val onClickListener: (T) -> Unit
+) : PagingDataAdapter<T, HorizontalPreviewAdapter<T>.HorizontalPreviewVH>(BaseDiffUtilItemCallback())
+        where T : PreviewModel, T : IBaseDiffModel<Int>
 {
 
-    inner class HorizontalAnimeVH(private val binding: ViewListVerticalItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HorizontalPreviewVH(private val binding: ViewListVerticalItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: AnimePreview
+            item: T
         ) {
             with(binding) {
                 tvName.text = item.title
@@ -37,13 +38,13 @@ class HorizontalAnimeAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalAnimeVH {
-        return HorizontalAnimeVH(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalPreviewVH {
+        return HorizontalPreviewVH(
             ViewListVerticalItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: HorizontalAnimeVH, position: Int) {
+    override fun onBindViewHolder(holder: HorizontalPreviewVH, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 

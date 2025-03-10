@@ -9,8 +9,9 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ua.aniloom.databinding.ViewCarouselMediaBinding
-import ua.aniloom.domain.models.anime.AnimePreview
-import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
+import ua.aniloom.domain.models.IBaseDiffModel
+import ua.aniloom.domain.models.PreviewModel
+import ua.aniloom.presentation.common.adapters.StackedPreviewCardAdapter
 import ua.aniloom.presentation.common.utils.SliderTransformer
 import ua.aniloom.presentation.common.utils.extensions.formatToString
 
@@ -23,7 +24,7 @@ class CarouselMediaView @JvmOverloads constructor(
     private val binding: ViewCarouselMediaBinding =
         ViewCarouselMediaBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private fun setupView(adapter: StackedAnimeCardAdapter) {
+    fun <T> setupView(adapter: StackedPreviewCardAdapter<T>) where T : PreviewModel, T : IBaseDiffModel<Int> {
         with(binding) {
             posterPager.apply {
                 setAdapter(adapter)
@@ -50,7 +51,7 @@ class CarouselMediaView @JvmOverloads constructor(
         }
     }
 
-    private fun updateTextFields(item: AnimePreview?) {
+    private fun <T : PreviewModel> updateTextFields(item: T?) {
         item?.let {
             with(binding) {
                 tvTitle.text = it.title
@@ -58,10 +59,6 @@ class CarouselMediaView @JvmOverloads constructor(
                 tvRating.text = it.score.score.formatToString()
             }
         }
-    }
-
-    fun setupAdapter(adapter: StackedAnimeCardAdapter) {
-        setupView(adapter)
     }
 
     fun showShimmer() = with(binding) {
