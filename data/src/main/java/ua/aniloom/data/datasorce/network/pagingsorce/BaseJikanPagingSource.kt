@@ -10,7 +10,7 @@ import ua.aniloom.data.datasorce.network.dto.JikanPagingDto
 import java.io.IOException
 import java.io.InterruptedIOException
 
-private const val BASE_STARTING_PAGE_INDEX = 0
+private const val BASE_STARTING_PAGE_INDEX = 1
 
 
 abstract class BaseJikanPagingSource<Domain : Any, DTO : DtoMapper<DTO, Domain>>(
