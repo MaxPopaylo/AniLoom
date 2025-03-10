@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ua.aniloom.R
 import ua.aniloom.databinding.ViewListTodayScheduleItemBinding
-import ua.aniloom.domain.models.anime.AnimePreview
+import ua.aniloom.domain.models.IBaseDiffModel
+import ua.aniloom.domain.models.PreviewModel
 import ua.aniloom.presentation.common.base.BaseDiffUtilItemCallback
 import ua.aniloom.presentation.common.utils.extensions.formatToString
 
-class TodayScheduleAnimeAdapter(
-    private val onClickListener: (AnimePreview) -> Unit
-): PagingDataAdapter<AnimePreview, TodayScheduleAnimeAdapter.TodayScheduleAnimeVH>(
-    BaseDiffUtilItemCallback()
-) {
-    inner class TodayScheduleAnimeVH(private val binding: ViewListTodayScheduleItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class TodaySchedulePreviewAdapter<T>(
+    private val onClickListener: (T) -> Unit
+): PagingDataAdapter<T, TodaySchedulePreviewAdapter<T>.TodaySchedulePreviewVH>(BaseDiffUtilItemCallback())
+        where T : PreviewModel, T : IBaseDiffModel<Int>
+{
+    inner class TodaySchedulePreviewVH(private val binding: ViewListTodayScheduleItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: AnimePreview
+            item: T
         ) {
             val epsText = if (item.numEps == 0) "-" else item.numEps.formatToString()
             with(binding) {
@@ -38,13 +39,13 @@ class TodayScheduleAnimeAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayScheduleAnimeVH {
-        return TodayScheduleAnimeVH(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodaySchedulePreviewVH {
+        return TodaySchedulePreviewVH(
             ViewListTodayScheduleItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: TodayScheduleAnimeVH, position: Int) {
+    override fun onBindViewHolder(holder: TodaySchedulePreviewVH, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
