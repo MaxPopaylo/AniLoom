@@ -8,7 +8,9 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.aniloom.databinding.ViewHorizontalListBinding
-import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
+import ua.aniloom.domain.models.IBaseDiffModel
+import ua.aniloom.domain.models.PreviewModel
+import ua.aniloom.presentation.common.adapters.HorizontalPreviewAdapter
 import ua.aniloom.presentation.common.utils.extensions.setupRecycler
 
 class HorizontalList @JvmOverloads constructor(
@@ -20,11 +22,11 @@ class HorizontalList @JvmOverloads constructor(
     private val binding: ViewHorizontalListBinding =
         ViewHorizontalListBinding.inflate(LayoutInflater.from(context), this, true)
 
-    fun setupView(
-        adapter: HorizontalAnimeAdapter,
+    fun <T> setupView(
+        adapter: HorizontalPreviewAdapter<T>,
         title: String,
         buttonOnClick: () -> Unit
-    ) = with(binding) {
+    ) where T : PreviewModel, T : IBaseDiffModel<Int> = with(binding) {
         button.text = title
         button.setOnClickListener { buttonOnClick() }
 

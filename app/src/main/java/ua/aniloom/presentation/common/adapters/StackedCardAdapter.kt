@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ua.aniloom.R
 import ua.aniloom.databinding.ViewListStackedCardItemBinding
-import ua.aniloom.domain.models.anime.AnimePreview
+import ua.aniloom.domain.models.IBaseDiffModel
+import ua.aniloom.domain.models.PreviewModel
 import ua.aniloom.presentation.common.base.BaseDiffUtilItemCallback
 
-class StackedAnimeCardAdapter(
-    private val onClickListener: (AnimePreview) -> Unit
-): PagingDataAdapter<AnimePreview, StackedAnimeCardAdapter.StackedAnimeCardVH>(
-    BaseDiffUtilItemCallback()
-) {
+class StackedPreviewCardAdapter<T>(
+    private val onClickListener: (T) -> Unit
+): PagingDataAdapter<T, StackedPreviewCardAdapter<T>.StackedPreviewCardVH>(BaseDiffUtilItemCallback())
+        where T : PreviewModel, T : IBaseDiffModel<Int>
+{
 
-    inner class StackedAnimeCardVH(private val binding: ViewListStackedCardItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class StackedPreviewCardVH(private val binding: ViewListStackedCardItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: AnimePreview
+            item: T
         ) {
             Glide.with(itemView.context)
                 .load(item.mainPicture)
@@ -31,13 +32,13 @@ class StackedAnimeCardAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StackedAnimeCardVH {
-        return StackedAnimeCardVH(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StackedPreviewCardVH {
+        return StackedPreviewCardVH(
             ViewListStackedCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: StackedAnimeCardVH, position: Int) {
+    override fun onBindViewHolder(holder: StackedPreviewCardVH, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
