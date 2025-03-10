@@ -7,9 +7,10 @@ import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ua.aniloom.R
 import ua.aniloom.databinding.FragmentAnimeMainPageBinding
-import ua.aniloom.presentation.common.adapters.HorizontalAnimeAdapter
-import ua.aniloom.presentation.common.adapters.StackedAnimeCardAdapter
-import ua.aniloom.presentation.common.adapters.TodayScheduleAnimeAdapter
+import ua.aniloom.domain.models.anime.AnimePreview
+import ua.aniloom.presentation.common.adapters.HorizontalPreviewAdapter
+import ua.aniloom.presentation.common.adapters.StackedPreviewCardAdapter
+import ua.aniloom.presentation.common.adapters.TodaySchedulePreviewAdapter
 import ua.aniloom.presentation.common.base.BaseFragment
 
 class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMainPageBinding>(
@@ -20,19 +21,19 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     override val viewModel by viewModel<AnimeMainViewModel>()
 
     private val airingAnimeAdapter by lazy (LazyThreadSafetyMode.NONE) {
-        HorizontalAnimeAdapter(onClickListener = {
+        HorizontalPreviewAdapter<AnimePreview>(onClickListener = {
             Toast.makeText(requireContext(), "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
         })
     }
 
     private val rankingAnimeAdapter by lazy (LazyThreadSafetyMode.NONE) {
-        StackedAnimeCardAdapter(onClickListener = {
+        StackedPreviewCardAdapter<AnimePreview>(onClickListener = {
             Toast.makeText(requireContext(), "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
         })
     }
 
     private val todayScheduleAnimeAdapter by lazy (LazyThreadSafetyMode.NONE) {
-        TodayScheduleAnimeAdapter(onClickListener = {
+        TodaySchedulePreviewAdapter<AnimePreview>(onClickListener = {
             Toast.makeText(requireContext(), "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
         })
     }
@@ -52,7 +53,7 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
 
 
     private fun setupTodaySchedule() = with(binding) {
-        vTodaySchedule.setupAdapter(todayScheduleAnimeAdapter)
+        vTodaySchedule.setupView(todayScheduleAnimeAdapter)
         todayScheduleAnimeAdapter.addLoadStateListener { loadState ->
             when(loadState.refresh){
                 is LoadState.Loading -> vTodaySchedule.showShimmer()
@@ -83,7 +84,7 @@ class AnimeMainPageFragment : BaseFragment<AnimeMainViewModel, FragmentAnimeMain
     }
 
     private fun setupRankingAnimeCarousel() = with(binding) {
-        vAnimeCarousel.setupAdapter(rankingAnimeAdapter)
+        vAnimeCarousel.setupView(rankingAnimeAdapter)
         rankingAnimeAdapter.addLoadStateListener { loadState ->
             when(loadState.refresh){
                 is LoadState.Loading -> vAnimeCarousel.showShimmer()
