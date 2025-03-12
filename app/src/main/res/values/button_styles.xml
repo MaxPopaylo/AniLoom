@@ -3,24 +3,31 @@
 
     <style name="Widget.AniLoom.Button.Base" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">?attr/colorOnPrimary</item>
-        <item name="android:backgroundTint">?attr/colorPrimary</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="android:strokeColor">?attr/colorSecondaryVariant</item>
         <item name="android:paddingVertical">4dp</item>
         <item name="android:paddingHorizontal">8dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.AniLoom.Body</item>
     </style>
 
     <style name="Widget.AniLoom.Button.Primary" parent="Widget.AniLoom.Button.Base">
-        <item name="cornerRadius">25dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetRight">12dp</item>
+        <item name="android:insetLeft">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AniLoom.W600</item>
     </style>
 
-    <style name="Widget.AniLoom.Button.Icon" parent="Widget.AniLoom.Button.Base">
-        <item name="android:tint">?attr/colorOnPrimary</item>
-        <item name="android:minWidth">15dp</item>
-        <item name="android:minHeight">15dp</item>
-        <item name="shapeAppearance">@style/CircleShape</item>
-        <item name="android:padding">2dp</item>
+    <style name="Widget.AniLoom.Button.IconOnly" parent="Widget.AniLoom.Button.Base">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="shapeAppearanceOverlay">@style/CircleShape</item>
     </style>
 
     <style name="CircleShape">
@@ -37,5 +44,18 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textAppearance">@style/TextAppearance.AniLoom.Heading3</item>
     </style>
+
+    <style name="Widget.AniLoom.TextButton.Icon" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">22sp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AniLoom.W600</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="iconGravity">textEnd</item>
+        <item name="iconPadding">12dp</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+        <item name="iconSize">24dp</item>
+    </style>
+
 
 </resources>

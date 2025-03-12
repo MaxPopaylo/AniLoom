@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="4dp"
+    android:insetRight="4dp"
+    android:insetTop="2dp"
+    android:insetBottom="2dp">
+    <selector>
+        <item android:state_selected="true" >
+            <layer-list>
+
+                <item>
+                    <shape android:shape="rectangle">
+                        <corners android:radius="4dp" />
+                        <gradient
+                            android:startColor="?attr/colorSecondaryVariant"
+                            android:endColor="?attr/colorOnSecondary"
+                            android:angle="135" />
+                    </shape>
+                </item>
+
+                <item android:start="1.5dp" android:end="1dp" android:top="1.5dp" android:bottom="1dp">
+                    <shape android:shape="rectangle">
+                        <corners android:radius="4dp" />
+                        <solid android:color="?attr/colorSecondary"/>
+                    </shape>
+                </item>
+
+            </layer-list>
+        </item>
+        <item android:state_selected="false" >
+            <layer-list>
+
+                <item>
+                    <shape android:shape="rectangle">
+                        <corners android:radius="4dp" />
+                        <gradient
+                            android:startColor="?attr/colorSecondaryVariant"
+                            android:endColor="?attr/colorOnSecondary"
+                            android:angle="135" />
+                    </shape>
+                </item>
+
+                <item android:start="1.5dp" android:end="1dp" android:top="1.5dp" android:bottom="1dp">
+                    <shape android:shape="rectangle">
+                        <corners android:radius="4dp" />
+                        <solid android:color="?attr/colorPrimary"/>
+                    </shape>
+                </item>
+
+            </layer-list>
+        </item>
+    </selector>
+</inset>

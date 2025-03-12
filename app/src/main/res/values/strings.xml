@@ -3,4 +3,23 @@
     <string name="title_search">Search</string>
     <string name="title_my_list">My List</string>
     <string name="title_settings">Settings</string>
+    <string name="title_profile">Profile</string>
+    <string name="search_field_hint">Search anime …</string>
+    <string name="cancel">Cancel</string>
+    <string name="filter">Filter</string>
+    <string name="charts">Charts</string>
+    <string name="top_100">Top 100</string>
+    <string name="anime">Anime</string>
+    <string name="manga">Manga</string>
+    <string name="centered_dot">•</string>
+    <string name="rate_0_0">0.0</string>
+    <string name="rating">Rating</string>
+    <string name="year">Year</string>
+    <string name="title">Title</string>
+    <string name="poster">Poster</string>
+    <string name="airing">Airing</string>
+    <string name="top">Top</string>
+    <string name="eps">eps</string>
+    <string name="date">Date</string>
+    <string name="episodes_count">eps: %1$s</string>
 </resources>

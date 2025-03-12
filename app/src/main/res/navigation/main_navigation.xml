@@ -12,4 +12,16 @@
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search_page" />
 
+    <fragment
+        android:id="@+id/myListPageFragment"
+        android:name="ua.aniloom.presentation.pages.my_list.MyListPageFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_my_list_page"/>
+
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="ua.aniloom.presentation.pages.profile.ProfilePageFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile_page"/>
+
 </navigation>

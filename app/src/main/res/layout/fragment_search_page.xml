@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
-    tools:context=".presentation.pages.search.SearchPageFragment">
+    tools:context=".presentation.pages.search.SearchPageFragment"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp">
 
-    <LinearLayout
+    <ua.aniloom.presentation.common.views.SearchFieldView
+        android:id="@+id/vSearchField"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Blanck"
-            android:textAppearance="@style/TextAppearance.AniLoom.Heading3"
-            android:gravity="center"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/searchScreensTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimary"
+        app:tabTextColor="?attr/colorOnSecondary"
+        app:tabSelectedTextColor="?attr/colorOnPrimary"
+        app:tabBackground="@drawable/pager_tab_indicator"
+        app:tabIndicatorHeight="0dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="14dp"/>
 
-    </LinearLayout>
-</FrameLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/searchScreensPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

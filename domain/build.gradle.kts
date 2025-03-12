@@ -13,6 +13,9 @@ kotlin {
 }
 
 dependencies {
+    //MARK: Pagination
+    implementation(libs.androidx.paging.common)
+
     // Javax Inject
     api(libs.javax.inject)
 

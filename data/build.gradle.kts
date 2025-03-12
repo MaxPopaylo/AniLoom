@@ -36,6 +36,15 @@ dependencies {
 
     implementation(project(":domain"))
 
+    // MARK: - Networking
+    implementation(libs.bundles.moshi)
+    implementation(libs.bundles.retrofit)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.bundles.okhttp)
+
+    //MARK: Pagination
+    implementation(libs.androidx.paging.runtime)
+
     //MARK: Testing Dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)

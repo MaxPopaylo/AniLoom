@@ -1,54 +1,61 @@
 package ua.aniloom.presentation.pages.search
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ua.aniloom.R
+import ua.aniloom.databinding.FragmentSearchPageBinding
+import ua.aniloom.domain.models.anime.Genres
+import ua.aniloom.presentation.common.adapters.FragmentPagerAdapter
+import ua.aniloom.presentation.common.base.BaseFragment
+import ua.aniloom.presentation.pages.search.fragments.anime.AnimeMainPageFragment
+import ua.aniloom.presentation.pages.search.fragments.manga.MangaMainPageFragment
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchPageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SearchPageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SearchPageFragment : BaseFragment<SearchViewModel, FragmentSearchPageBinding>(
+    R.layout.fragment_search_page
+) {
+    override val binding by viewBinding (FragmentSearchPageBinding::bind)
+    override val viewModel by viewModel<SearchViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
+    private var pagerAdapter: FragmentPagerAdapter? = null
 
+
+    override fun initialize() {
+        setupScreensPager()
+        setupSearchField()
+    }
+
+
+    private fun setupSearchField() = with(binding) {
+        vSearchField.apply {
+            setItems(
+                items = Genres.entries.toList(),
+                labelProvider = { it.genre.name },
+                onItemClick = {
+
+                }
+            )
+            setOnSearchListener {  }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_page, container, false)
+    private fun setupScreensPager() = with(binding) {
+        pagerAdapter = FragmentPagerAdapter(childFragmentManager, lifecycle).apply {
+            addFragment(AnimeMainPageFragment(), getString(R.string.anime))
+            addFragment(MangaMainPageFragment(), getString(R.string.manga))
+        }
+
+        searchScreensPager.apply {
+            isSaveEnabled = false
+            adapter = pagerAdapter
+            isUserInputEnabled = false
+        }
+
+        TabLayoutMediator(searchScreensTab, searchScreensPager) { tab, position ->
+            tab.text = pagerAdapter?.getPageTitle(position)
+        }.attach()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchPageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance() =
-            SearchPageFragment().apply {
-                arguments = Bundle().apply {
 
-                }
-            }
-    }
 }

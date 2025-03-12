@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.AniLoom.Base" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">?attr/colorOnPrimary</item>
-    </style>
+    <style name="TextAppearance.AniLoom.Base" parent="TextAppearance.MaterialComponents.Body1"/>
 
 
     <!-- Font Weights -->
@@ -52,7 +50,6 @@
 
     <style name="TextAppearance.AniLoom.Caption" parent="TextAppearance.AniLoom.W300">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
 </resources>
